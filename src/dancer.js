@@ -6,12 +6,12 @@ var MakeDancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
   console.log('this.$node is: ', this.$node);
 
-  // this.step();
-  MakeDancer.prototype.step();
+  this.step();
+  // makedancer.prototype.step();
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
-  // this.setPosition(top, left);
-  MakeDancer.prototype.setPosition.call(this, top, left);
+  this.setPosition(top, left);
+  // MakeDancer.prototype.setPosition.call(this, top, left);
 
   // return dancer;
 };
@@ -25,8 +25,9 @@ MakeDancer.prototype.step = function() {
   // it just schedules the next step
   console.log('accessing old step');
   var context = this;
-  setTimeout(context.step, context.timeBetweenSteps);
-  // setTimeout(context.step, 1000);
+  // setTimeout(this.step.bind(context), context.timeBetweenSteps);
+  setTimeout(this.step.bind(context), this.timeBetweenSteps);
+  // setInterval(this.step, 1000);
 };
 
 
