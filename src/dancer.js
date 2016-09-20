@@ -24,9 +24,16 @@ MakeDancer.prototype.setPosition = function(top, left) {
     // Use css top and left properties to position our <span> tag
     // where it belongs on the page. See http://api.jquery.com/css/
     //
+  // if (top < 300) {
+  //   top = 300;
+  // }
   var styleSettings = {
     top: top,
     left: left
   };
   this.$node.css(styleSettings);
+};
+
+MakeDancer.prototype.getInLine = function(top, left) {
+  this.$node.animate({top: top, left: left}, 1000);
 };

@@ -22,13 +22,42 @@ $(document).ready(function() {
 
     // make a dancer with a random position
 
+    makeRandomTop = function() {
+      var maxHeight = $('body').height();      
+      return Math.floor(Math.random() * (maxHeight - 375)) + 375;
+    };
+
+    makeRandomLeft = function() {
+      // var maxWidth = $('body').width();      
+      var maxWidth = 1500;      
+      return Math.floor(Math.random() * (maxWidth - 200)) + 0;
+    };
+
+    makeRandomTime = function() {
+      return Math.random() * 1000;
+    };
+
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
-      Math.random() * 1000
+      makeRandomTop(), makeRandomLeft(), makeRandomTime()
     );
+
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
+  });
+
+  $('.moveToLine').on('click', function(event) {
+    var leftPosition = 0;
+    // var rightPosition = 1300;
+    var rightPosition = 1300;
+    for (var i = 0; i < window.dancers.length; i++) {
+      if (window.dancers[i].name === 'Snoop Dogg') {
+        window.dancers[i].getInLine(600, leftPosition);
+        leftPosition += 50;
+      } else if (window.dancers[i].name === 'Carlton Banks') {
+        window.dancers[i].getInLine(600, rightPosition);
+        rightPosition -= 50;
+      }
+    }
   });
 });
 

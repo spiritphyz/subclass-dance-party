@@ -6,6 +6,7 @@ body{
   /*background-color:#444;*/
   background-color:#fff;
   font-size: 18px;
+  /*border: 10px solid red;*/
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -21,6 +22,13 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
+.background{
+  content:url(./src/dancefloorbackground2.jpg);
+  height:1000px;
+  width:auto;
+}
+
 .dancer{
   border:10px solid red;
   border-radius:10px;
@@ -29,7 +37,7 @@ body, a:link, a:visited, a:active{
 
 .carlton{
   content:url(./src/carlton.gif);
-  width: 200px;
+  width: 150px;
   height: auto;
   position:absolute;
 }
@@ -37,6 +45,13 @@ body, a:link, a:visited, a:active{
 .snoop{
   content:url(./src/snoop.gif);
   position:absolute;
-  width: 275px;
+  width: 200px;
+  height: auto;
+}
+
+.leftshark{
+  content:url(./src/leftshark.gif);
+  position:absolute;
+  width: 140px;
   height: auto;
 }

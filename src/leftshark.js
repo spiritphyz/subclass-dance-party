@@ -1,18 +1,18 @@
-var SnoopDogg = function(top, left, timeBetweenSteps) {
+var LeftShark = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this.name = 'Snoop Dogg';
+  this.name = 'Left Shark';
   this.oldStep = MakeDancer.prototype.step;
   MakeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<div class="snoop"></div>');
+  this.$node = $('<div class="leftshark"></div>');
   this.setPosition(top, left);
   this.location = [left, top];
 };
 
-SnoopDogg.prototype = Object.create(MakeDancer.prototype);
-SnoopDogg.prototype.constructor = SnoopDogg;
+LeftShark.prototype = Object.create(MakeDancer.prototype);
+LeftShark.prototype.constructor = LeftShark;
 
-SnoopDogg.prototype.step = function() {
+LeftShark.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
   this.oldStep();
 
@@ -23,7 +23,7 @@ SnoopDogg.prototype.step = function() {
   // this.$node.effect("explode", 10);
 };
 
-SnoopDogg.prototype.setLocation = function (top, left) {
+LeftShark.prototype.setLocation = function (top, left) {
   this.setPosition(top, left);
 };
 
