@@ -43,3 +43,7 @@ MakeDancer.prototype.getInLine = function(top, left) {
 MakeDancer.prototype.exitLeft = function() {
   this.$node.animate({left: '-=2500'}, 700);
 };
+
+MakeDancer.prototype.exitRight = function() {
+  this.$node.animate({left: '+=2500'}, 700);
+};

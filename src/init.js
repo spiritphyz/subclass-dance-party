@@ -47,24 +47,18 @@ $(document).ready(function() {
 
   $('.moveToLine').on('click', function(event) {
     /** max 10 per line is good */
-    // var leftPosition = 0;
-    var leftPosition = 600;
-    var rightPosition = 1300;
-    // var leftY = 600;
+    var leftPosition = 540;
+    var rightPosition = 740;
     var leftY = 400;
-    var rightY = 600;
+    var rightY = 400;
     var angle = 0;
     var vertAngle = 90;
     var leftCounter = 0;
     var rightcounter = 0;
-    // var groupOfTen = window.dancers.slice(0, 9);
-    // var remainingDancers = window.dancers.slice(9);
-    // for (var i = 0; i < window.dancers.length; i++) {
-    // window.dancers[0].exitLeft();
+
     for (var i = 0; i < window.dancers.length; i++) {
-      
       if (window.dancers[i].name === 'Snoop Dogg' || window.dancers[i].name === 'Left Shark') {
-        if (leftCounter <= 10) {
+        if (leftCounter < 10) {
           leftCounter++;
           window.dancers[i].getInLine(leftY, leftPosition);
           leftPosition -= 60;
@@ -74,9 +68,14 @@ $(document).ready(function() {
         }
 
       } else if (window.dancers[i].name === 'Carlton Banks') {
-        window.dancers[i].getInLine(rightY, rightPosition);
-        rightPosition -= 50;
-        rightY -= 25;
+        if (rightcounter < 10) {
+          rightcounter++;
+          window.dancers[i].getInLine(rightY, rightPosition);
+          rightPosition += 60;
+          rightY += 30;
+        } else {
+          window.dancers[i].exitRight();
+        }
       }
     }
 
