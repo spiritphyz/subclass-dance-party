@@ -81,10 +81,18 @@ $(document).ready(function() {
         }
 
       } else if (window.dancers[i].name === 'Carlton Banks') {
+        var styleSettings = {
+          width: 'auto',
+          height: '250',
+          'z-index': 'auto',
+          content: 'url(./src/carlton.gif)'
+        };
+        
         if (rightcounter < 10) {
           rightcounter++;
           battleRight.push(window.dancers[i]);
           window.dancers[i].getInLine(rightY, rightPosition);
+          window.dancers[i].$node.css(styleSettings);
           rightPosition += 60;
           rightY += 30;
         } else {
@@ -92,7 +100,6 @@ $(document).ready(function() {
         }
       }
     }
-
   });
 
   $('.startBattle').on('click', function(event) {
@@ -111,6 +118,23 @@ $(document).ready(function() {
     snoopy.$node.css(styleSettings);
     snoopy.beginBattleLeft();
 
+    var carltonIndexList = [];
+    for (var i = 0; i < battleRight.length; i++) {
+      if (battleRight[i].name === 'Carlton Banks') {
+        carltonIndexList.push(i);
+      }
+    }
+    var randomIndex = Math.floor(Math.random() * carltonIndexList.length);
+    var designatedCarltonIdx = carltonIndexList[randomIndex];
+    var heyCarlton = battleRight[designatedCarltonIdx];
+    var styleSettings = {
+      'z-index': 100,
+      content: 'url(./src/carltonTwerk.gif)',
+      width: '200px',
+      height: 'auto'
+    };
+    heyCarlton.$node.css(styleSettings);
+    heyCarlton.beginBattleRight();
   });
 
   // $('.createTwentyDancers').on('click', function(event) {
