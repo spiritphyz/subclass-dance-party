@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  /*background-color:#444;*/
+  background-color:#fff;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -24,4 +25,18 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+
+.carlton{
+  content:url(./src/carlton.gif);
+  width: 200px;
+  height: auto;
+  position:absolute;
+}
+
+.snoop{
+  content:url(./src/snoop.gif);
+  position:absolute;
+  width: 275px;
+  height: auto;
 }
