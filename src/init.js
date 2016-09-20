@@ -23,14 +23,14 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     makeRandomTop = function() {
-      var maxHeight = $('body').height();      
-      return Math.floor(Math.random() * (maxHeight - 375)) + 375;
+      var maxHeight = $('body').height() - 220;      
+      return Math.floor(Math.random() * (maxHeight - 440)) + 440;
     };
 
     makeRandomLeft = function() {
       // var maxWidth = $('body').width();      
       var maxWidth = 1500;      
-      return Math.floor(Math.random() * (maxWidth - 200)) + 0;
+      return Math.floor(Math.random() * (maxWidth - 180)) + 0;
     };
 
     makeRandomTime = function() {
@@ -46,22 +46,60 @@ $(document).ready(function() {
   });
 
   $('.moveToLine').on('click', function(event) {
-    var leftPosition = 0;
-    // var rightPosition = 1300;
+    /** max 10 per line is good */
+    // var leftPosition = 0;
+    var leftPosition = 600;
     var rightPosition = 1300;
-    var leftY= 600;
-    var rightY= 600;
+    // var leftY = 600;
+    var leftY = 400;
+    var rightY = 600;
+    var angle = 0;
+    var vertAngle = 90;
+    var leftCounter = 0;
+    var rightcounter = 0;
+    // var groupOfTen = window.dancers.slice(0, 9);
+    // var remainingDancers = window.dancers.slice(9);
+    // for (var i = 0; i < window.dancers.length; i++) {
+    // window.dancers[0].exitLeft();
     for (var i = 0; i < window.dancers.length; i++) {
-      if (window.dancers[i].name === 'Snoop Dogg' || window.dancers[i].name === "Left Shark") {
-        window.dancers[i].getInLine(leftY, leftPosition);
-        leftPosition += 50;
-        leftY -= 25;
+      
+      if (window.dancers[i].name === 'Snoop Dogg' || window.dancers[i].name === 'Left Shark') {
+        if (leftCounter <= 10) {
+          leftCounter++;
+          window.dancers[i].getInLine(leftY, leftPosition);
+          leftPosition -= 60;
+          leftY += 30;
+        } else {
+          window.dancers[i].exitLeft();
+        }
+
       } else if (window.dancers[i].name === 'Carlton Banks') {
         window.dancers[i].getInLine(rightY, rightPosition);
         rightPosition -= 50;
         rightY -= 25;
       }
     }
+
+    // for (var i = 10; i < remainingDancers.length + 9; i++) {
+    //   if (window.dancers[i].name === 'Snoop Dogg' || window.dancers[i].name === 'Left Shark') 
+    // }
+
   });
 });
+
+
+/** angular line
+    if (window.dancers[i].name === 'Snoop Dogg' || window.dancers[i].name === 'Left Shark') {
+        if (leftCounter <= 10) {
+          leftCounter++;
+          window.dancers[i].getInLine(leftY, leftPosition);
+          angle += 15;
+          leftPosition += Math.cos(angle) + 70;
+          // leftY -= 25;
+          vertAngle -= 5;
+          leftY -= Math.sin(vertAngle) + 20;
+        } else {
+          window.dancers[i].exitLeft();
+        }
+*/
 
