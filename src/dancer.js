@@ -47,3 +47,7 @@ MakeDancer.prototype.exitLeft = function() {
 MakeDancer.prototype.exitRight = function() {
   this.$node.animate({left: '+=2500'}, 700);
 };
+
+MakeDancer.prototype.beginBattleLeft = function() {
+  this.$node.animate({top: '550', left: '500'}, 700);
+};
