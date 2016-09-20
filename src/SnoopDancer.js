@@ -1,4 +1,4 @@
-var MakeSnoopDancer = function(top, left, timeBetweenSteps) {
+var SnoopDogg = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
 
@@ -6,12 +6,13 @@ var MakeSnoopDancer = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<div class="snoop"></div>');
   this.setPosition(top, left);
+  this.location = [left, top];
 };
 
-MakeSnoopDancer.prototype = Object.create(MakeDancer.prototype);
-MakeSnoopDancer.prototype.constructor = MakeBlinkyDancer;
+SnoopDogg.prototype = Object.create(MakeDancer.prototype);
+SnoopDogg.prototype.constructor = MakeBlinkyDancer;
 
-MakeSnoopDancer.prototype.step = function() {
+SnoopDogg.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
   this.oldStep();
 
@@ -19,5 +20,9 @@ MakeSnoopDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
 
-  // this.$node.toggle();
+  this.$node.effect("explode", 10);
+};
+
+SnoopDogg.prototype.setLocation = function (top, left) {
+  this.setPosition(top, left);
 };
