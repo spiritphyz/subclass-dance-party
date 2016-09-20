@@ -49,13 +49,17 @@ $(document).ready(function() {
     var leftPosition = 0;
     // var rightPosition = 1300;
     var rightPosition = 1300;
+    var leftY= 600;
+    var rightY= 600;
     for (var i = 0; i < window.dancers.length; i++) {
-      if (window.dancers[i].name === 'Snoop Dogg') {
-        window.dancers[i].getInLine(600, leftPosition);
+      if (window.dancers[i].name === 'Snoop Dogg' || window.dancers[i].name === "Left Shark") {
+        window.dancers[i].getInLine(leftY, leftPosition);
         leftPosition += 50;
+        leftY -= 25;
       } else if (window.dancers[i].name === 'Carlton Banks') {
-        window.dancers[i].getInLine(600, rightPosition);
+        window.dancers[i].getInLine(rightY, rightPosition);
         rightPosition -= 50;
+        rightY -= 25;
       }
     }
   });

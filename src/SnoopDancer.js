@@ -4,7 +4,7 @@ var SnoopDogg = function(top, left, timeBetweenSteps) {
   this.name = 'Snoop Dogg';
   this.oldStep = MakeDancer.prototype.step;
   MakeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<div class="snoop"></div>');
+  this.$node = $('<div class="snoop showBorder"></div>');
   this.setPosition(top, left);
   this.location = [left, top];
 };

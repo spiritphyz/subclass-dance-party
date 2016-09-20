@@ -4,7 +4,7 @@ var Carlton = function(top, left, timeBetweenSteps) {
   this.name = 'Carlton Banks';
   this.oldStep = MakeDancer.prototype.step;
   MakeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<div class="carlton"></div>');
+  this.$node = $('<div class="carlton showBorder"></div>');
   this.setPosition(top, left);
 };
 

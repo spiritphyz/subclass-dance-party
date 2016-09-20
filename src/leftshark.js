@@ -4,7 +4,7 @@ var LeftShark = function(top, left, timeBetweenSteps) {
   this.name = 'Left Shark';
   this.oldStep = MakeDancer.prototype.step;
   MakeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<div class="leftshark"></div>');
+  this.$node = $('<div class="leftshark showBorder"></div>');
   this.setPosition(top, left);
   this.location = [left, top];
 };
