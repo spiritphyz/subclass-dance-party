@@ -49,9 +49,14 @@ MakeDancer.prototype.exitRight = function() {
 };
 
 MakeDancer.prototype.beginBattleLeft = function() {
-  this.$node.animate({top: '550', left: '550'}, 700);
+  this.$node.animate({top: '600', left: '550'}, 700);
 };
 
 MakeDancer.prototype.beginBattleRight = function() {
-  this.$node.animate({top: '550', left: '700'}, 700);
+  this.$node.animate({top: '500', left: '700'}, 700);
+};
+
+
+MakeDancer.prototype.exitTop = function() {
+  this.$node.animate({top: '-=2500'}, 700);
 };

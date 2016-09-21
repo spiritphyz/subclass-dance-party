@@ -60,3 +60,18 @@ body, a:link, a:visited, a:active{
   width: 140px;
   height: auto;
 }
+
+.twerkBoy{
+  content:url(./src/twerkboy.gif);
+  position:absolute;
+  width: 140px;
+  height: auto;
+}
+
+.twerkGirl{
+  content:url(./src/twerkgirl.gif);
+  z-index: 100;
+  position:absolute;
+  width: 140px;
+  height: auto;
+}
