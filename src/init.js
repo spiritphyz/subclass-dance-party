@@ -4,6 +4,7 @@ $(document).ready(function() {
   window.battleRight = [];
   window.twerkBoyRef = [];
   window.twerkGirlRef = [];
+  window.flag = true;
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -40,25 +41,26 @@ $(document).ready(function() {
       return Math.random() * 1000;
     };
 
-    // var dancer = new dancerMakerFunction(
-    //   makeRandomTop(), makeRandomLeft(), makeRandomTime()
-    // );
+    var dancer = new dancerMakerFunction(
+      makeRandomTop(), makeRandomLeft(), makeRandomTime()
+    );
 
-    // window.dancers.push(dancer);
-    // $('body').append(dancer.$node);
+    window.dancers.push(dancer);
+    $('body').append(dancer.$node);
 
-    for (var i = 0; i < 40; i++) {
-      var dancer = new dancerMakerFunction(
-        makeRandomTop(), makeRandomLeft(), makeRandomTime()
-      );
+    // // for (var i = 0; i < 40; i++) {
+    //   var dancer = new dancerMakerFunction(
+    //   makeRandomTop(), makeRandomLeft(), makeRandomTime())
+    //   // );
 
-      window.dancers.push(dancer);
-      $('body').append(dancer.$node);
-    }
+    //   window.dancers.push(dancer);
+    //   $('body').append(dancer.$node);
+    // }
 
   });
 
   $('.moveToLine').on('click', function(event) {
+    // if (!window.flag) {
     /** max 10 per line is good */
     var leftPosition = 540;
     var rightPosition = 740;
@@ -71,7 +73,7 @@ $(document).ready(function() {
 
 
     for (var i = 0; i < window.dancers.length; i++) {
-      if (window.dancers[i].name === 'Snoop Dogg' ) {
+      if (window.dancers[i].name === 'Snoop Dogg') {
         var styleSettingsSnoop = {
           width: 'auto',
           height: '200',
@@ -90,7 +92,7 @@ $(document).ready(function() {
         }
 
       } else if (window.dancers[i].name === 'Left Shark') {
-        if (leftCounter < 10) {
+        if (leftCounter < 9) {
           leftCounter++;
           window.battleLeft.push(window.dancers[i]);
           window.dancers[i].getInLine(leftY, leftPosition);
@@ -100,8 +102,6 @@ $(document).ready(function() {
         } else {
           window.dancers[i].exitLeft();
         }
-
-
 
       } else if (window.dancers[i].name === 'Carlton Banks') {
         var styleSettings = {
@@ -131,60 +131,68 @@ $(document).ready(function() {
       window.twerkGirlRef[twerkGirlRef.length - 1].exitRight();
       window.twerkGirlRef.pop();
     }
+    window.flag = true;
+    // }
   });
 
+
+
+
   $('.startBattle').on('click', function(event) {
-    var snoopIndexList = [];
-    for (var i = 0; i < window.battleLeft.length; i++) {
-      if (window.battleLeft[i].name === 'Snoop Dogg') {
-        snoopIndexList.push(i);
+    if (window.flag) {
+      var snoopIndexList = [];
+      for (var i = 0; i < window.battleLeft.length; i++) {
+        if (window.battleLeft[i].name === 'Snoop Dogg') {
+          snoopIndexList.push(i);
+        }
       }
-    }
-    var randomIndex = Math.floor(Math.random() * snoopIndexList.length);
-    var designatedSnoopIdx = snoopIndexList[randomIndex];
-    var snoopy = window.battleLeft[designatedSnoopIdx];
-    var styleSettings = {
-      'z-index': 101,
-      content: 'url(./src/cooldancer.gif)',
-      width: '450px',
-      height: 'auto'
-    };
-    snoopy.$node.css(styleSettings);
-    snoopy.beginBattleLeft();
+      var randomIndex = Math.floor(Math.random() * snoopIndexList.length);
+      var designatedSnoopIdx = snoopIndexList[randomIndex];
+      var snoopy = window.battleLeft[designatedSnoopIdx];
+      var styleSettings = {
+        'z-index': 101,
+        content: 'url(./src/cooldancer.gif)',
+        width: '450px',
+        height: 'auto'
+      };
+      snoopy.$node.css(styleSettings);
+      snoopy.beginBattleLeft();
 
 
-////////////////////////////////////////////////
+  ////////////////////////////////////////////////
 
-    var carltonIndexList = [];
-    for (var i = 0; i < window.battleRight.length; i++) {
-      if (window.battleRight[i].name === 'Carlton Banks') {
-        carltonIndexList.push(i);
+      var carltonIndexList = [];
+      for (var i = 0; i < window.battleRight.length; i++) {
+        if (window.battleRight[i].name === 'Carlton Banks') {
+          carltonIndexList.push(i);
+        }
       }
+      var randomIndex = Math.floor(Math.random() * carltonIndexList.length);
+      var designatedCarltonIdx = carltonIndexList[randomIndex];
+      var heyCarlton = window.battleRight[designatedCarltonIdx];
+      var carlStyle = {
+        'z-index': 99,
+        content: 'url(./src/carltonTwerk.gif)',
+        width: '250px',
+        height: 'auto'
+      };
+      heyCarlton.$node.css(carlStyle);
+      heyCarlton.beginBattleRight();
+
+      var makeTwerkBoy = window['twerkBoy'];
+      var twerkerBoy = new makeTwerkBoy(360, 360);
+      window.twerkBoyRef.push(twerkerBoy);
+      $('body').append(twerkerBoy.$node);
+      twerkerBoy.getInPosition();
+
+      var makeTwerkGirl = window['twerkGirl'];
+      var twerkerGirl = new makeTwerkGirl(400, 900);
+      window.twerkGirlRef.push(twerkerGirl);
+      $('body').append(twerkerGirl.$node);
+      twerkerGirl.getInPosition();
+
+      window.flag = false;
     }
-    var randomIndex = Math.floor(Math.random() * carltonIndexList.length);
-    var designatedCarltonIdx = carltonIndexList[randomIndex];
-    var heyCarlton = window.battleRight[designatedCarltonIdx];
-    var carlStyle = {
-      'z-index': 99,
-      content: 'url(./src/carltonTwerk.gif)',
-      width: '250px',
-      height: 'auto'
-    };
-    heyCarlton.$node.css(carlStyle);
-    heyCarlton.beginBattleRight();
-
-    var makeTwerkBoy = window['twerkBoy'];
-    var twerkerBoy = new makeTwerkBoy(360, 360);
-    window.twerkBoyRef.push(twerkerBoy);
-    $('body').append(twerkerBoy.$node);
-    twerkerBoy.getInPosition();
-
-    var makeTwerkGirl = window['twerkGirl'];
-    var twerkerGirl = new makeTwerkGirl(400, 900);
-    window.twerkGirlRef.push(twerkerGirl);
-    $('body').append(twerkerGirl.$node);
-    twerkerGirl.getInPosition();
-
   });
 
   // $('.createTwentyDancers').on('click', function(event) {
